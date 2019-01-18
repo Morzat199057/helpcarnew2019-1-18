@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>new webview</title>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/publicFun.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			#login {
+				width: 80%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">车帮忙登录</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>用户名</label>
+					<input type="text" class="mui-input-clear" placeholder="请输入用户名">
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input type="password" class="mui-input-password" placeholder="请输入密码">
+				</div>
+
+				<!--<div class="mui-switch mui-active">
+					<div class="mui-switch-handle"></div>
+				</div>-->
+				<div class="mui-input-row">
+					<label>自动登陆</label>
+					<div id="mySwitch" class="mui-switch mui-active mui-switch-blue">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</div>
+				<div class="mui-button-row longo">
+					<button id="login" type="button" class="mui-btn mui-btn-primary">登陆</button>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript">
+		mui.plusReady(function() {
+			localStorage.clear();
+			
+//			var loginStr = plus.storage.getItem("$users");
+//						alert(loginStr)
+//			if(loginStr['username'] != '' && loginStr['password'] != '') {
+//				$('.mui-input-clear').val(loginStr['username'])
+//				$('.mui-input-password').val(loginStr['password'])
+//				if(loginStr['AutomaticLogin']) {
+//					login()
+//				}
+//			}
+
+
+
+			mui('.longo').on('tap', '#login', function() {
+				if($('.mui-input-clear').val() == '' || $('.mui-input-password').val() == '') {
+					mui.alert('请正确填写账号密码！')
+				} else {
+					login($('.mui-input-clear').val(), $('.mui-input-password').val())
+				}
+			})
+
+		})
+	</script>
+
+</html>
